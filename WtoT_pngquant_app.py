@@ -15,7 +15,7 @@ import streamlit as st
 from io import BytesIO
 import base64
 import pngquant
-from .WtoT_pngquant import pngquant.exe as pngquant
+from .WtoT_pngquant import pngquant
 
 ########################## DEFINE FUNCTIONS ################################
 # Function to covert Red background image to Transparent background image
