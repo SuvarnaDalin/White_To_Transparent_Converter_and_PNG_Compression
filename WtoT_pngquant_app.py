@@ -5,6 +5,7 @@ Created on Fri Aug 13 11:26:02 2021
 @author: suvarna
 """
 
+
 ########################## LIBRARIES & MODULES #############################
 
 import numpy as np
@@ -50,23 +51,24 @@ def get_image_download_link(img,filename,text):
 #         pngquant.quant_image(path_img)#, override=True, delete=True)
 #         return(path_img)
 
+pngquantExe = "https://github.com/SuvarnaDalin/WtoT_pngquant/releases/download/v1.0.7/pngquant.exe"
 COMPRESS_ALLOWED_EXT = ["png", "jpg", "jpeg"]
 COMPRESS_ALLOWED_EXT.extend([ext.upper() for ext in COMPRESS_ALLOWED_EXT])
 
 def compress_by_pngquant(crop_img, mn, mx):
     crop_img.save('check.png')
     path_img = 'check.png'
-    pngquant.config(min_quality=mn, max_quality=mx)  # "/usr/bin/pngquant", min_quality=60, max_quality=90
+    pngquantExe.config(min_quality=mn, max_quality=mx)  # "/usr/bin/pngquant", min_quality=60, max_quality=90
 
     if os.path.isdir(path_img):
         
         for ext in COMPRESS_ALLOWED_EXT:
             for path_ in glob(r"{}/**/*.{}".format(path_img, ext), recursive=True):
-                pngquant.quant_image(path_, override=True, delete=True)
+                pngquantExe.quant_image(path_, override=True, delete=True)
     else:
         _, ext = os.path.splitext(path_img)
         if ext and ext[1:] in COMPRESS_ALLOWED_EXT:
-            pngquant.quant_image(path_img, override=True, delete=True)
+            pngquantExe.quant_image(path_img, override=True, delete=True)
     return(path_img)
             
 ############################################################################
