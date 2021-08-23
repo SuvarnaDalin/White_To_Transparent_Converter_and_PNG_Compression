@@ -15,7 +15,6 @@ import streamlit as st
 from io import BytesIO
 import base64
 import pngquant
-from .WtoT_pngquant import pngquant
 
 ########################## DEFINE FUNCTIONS ################################
 # Function to covert Red background image to Transparent background image
@@ -44,6 +43,7 @@ def get_image_download_link(img,filename,text):
 def compress_by_pngquant(crop_img, mn, mx):
         crop_img.save('check.png')
         path_img = 'check.png'
+        pngquant.config()['quant_file'] = "/pngquant.exe"
         pngquant.config(min_quality=mn, max_quality=mx)  # "/usr/bin/pngquant", min_quality=60, max_quality=90
         pngquant.quant_image(path_img)#, override=True, delete=True)
         return(path_img)
