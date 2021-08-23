@@ -53,8 +53,9 @@ def get_image_download_link(img,filename,text):
 COMPRESS_ALLOWED_EXT = ["png", "jpg", "jpeg"]
 COMPRESS_ALLOWED_EXT.extend([ext.upper() for ext in COMPRESS_ALLOWED_EXT])
 
-def compress_by_pngquant(path_img, mn, mx):
-   
+def compress_by_pngquant(crop_img, mn, mx):
+    crop_img.save('check.png')
+    path_img = 'check.png'
     pngquant.config(min_quality=mn, max_quality=mx)  # "/usr/bin/pngquant", min_quality=60, max_quality=90
 
     if os.path.isdir(path_img):
