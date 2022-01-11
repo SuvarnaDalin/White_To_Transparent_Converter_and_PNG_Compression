@@ -8,4 +8,3 @@ pillow==8.2.0
 pngquant==1.0.7
 glob2==0.7
 opencv-python-headless==4.5.3.56
-opencv-python==4.5.3.56
